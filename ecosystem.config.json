@@ -1,0 +1,39 @@
+{
+    "apps":[
+        {
+            "name":"production",
+            "script":"./Build/App.js",
+            "instances":-1,
+            "exec_mode":"cluster",
+            "watch":false,
+            env:{
+                "NODE_ENV":"production",
+            }
+        },
+
+        {
+            "name":"development",
+            "script":"./Main/App.ts",
+            "instances":1,
+            "exec_mode":"cluster",
+            "interpreter":"node_modules/.bin/ts-node",
+            "watch":true,
+            "ignore_watch":[
+                "Build",
+                "Legacy",
+                "Test",
+                "node_modules",
+                ".gitignore",
+                "package-lock.json",
+                "package.json",
+            ],
+            env:{
+                "NODE_ENV":"development",
+                "PORT":5000,
+                "DB_NAME":"",
+                "DB_USER":"",
+                "DB_PASSWORD":""
+            }
+        }
+    ]
+}
